@@ -5,6 +5,9 @@ const searchButton = document.getElementById("search-button");
 const inputBox = document.getElementById("input-box");
 
 searchButton.addEventListener("click",function(){
+    if(inputBox.value === '' || inputBox.value != ''){
+        alert("Please try again !")
+    }
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputBox.value}`)
     .then(response => response.json())
     .then(data => {
