@@ -5,28 +5,30 @@ const searchButton = document.getElementById("search-button");
 const inputBox = document.getElementById("input-box");
 
 searchButton.addEventListener("click",function(){
-    if(inputBox.value === '' || inputBox.value != ''){
+    if(inputBox.value === ''){
         alert("Please try again !")
     }
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputBox.value}`)
-    .then(response => response.json())
-    .then(data => {
-        const mealInfo = data.meals;
-        mealInfo.forEach(element => {
-            const htmlTemplate = `
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="${element.strMealThumb}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">${element.strMeal}</h5>
-                            <a onclick="displayFoodDetails('${element.strMeal}')" class="stretched-link" href="#"></a>
+    else{
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputBox.value}`)
+        .then(response => response.json())
+        .then(data => {
+            const mealInfo = data.meals;
+            mealInfo.forEach(element => {
+                const htmlTemplate = `
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="${element.strMealThumb}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">${element.strMeal}</h5>
+                                <a onclick="displayFoodDetails('${element.strMeal}')" class="stretched-link" href="#"></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
-            foodDetails.innerHTML += htmlTemplate;
+                `;
+                foodDetails.innerHTML += htmlTemplate;
+            })
         })
-    })
+    }
 })
 
 const displayFoodDetails = name => {
