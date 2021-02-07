@@ -8,8 +8,8 @@ searchButton.addEventListener("click",function(){
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputBox.value}`)
     .then(response => response.json())
     .then(data => {
-        const countries = data.meals;
-            countries.forEach(element => {
+        const mealInfo = data.meals;
+        mealInfo.forEach(element => {
             const htmlTemplate = `
                 <div class="col">
                     <div class="card h-100">
@@ -24,7 +24,6 @@ searchButton.addEventListener("click",function(){
             foodDetails.innerHTML += htmlTemplate;
         })
     })
-    .catch(error => alert(error))
 })
 
 const displayFoodDetails = name => {
@@ -34,34 +33,33 @@ const displayFoodDetails = name => {
         .then(response => response.json())
         .then(data => {
             const htmlTemplate = `
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="${data.meals[0].strMealThumb}" class="card-img-top w-25 m-auto" alt="...">
+                <div class="col d-flex justify-content-center">
+                    <div class="card h-100 w-50">
+                        <img src="${data.meals[0].strMealThumb}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">${data.meals[0].strMeal}</h5>
-                            <p>Category: ${data.meals[0].strCategory}</p>
-                            <p>Ingredient: 
-                            ${data.meals[0].strIngredient1},
-                            ${data.meals[0].strIngredient2},
-                            ${data.meals[0].strIngredient3},
-                            ${data.meals[0].strIngredient4},
-                            ${data.meals[0].strIngredient5},
-                            ${data.meals[0].strIngredient6},
-                            ${data.meals[0].strIngredient7},
-                            ${data.meals[0].strIngredient8},
-                            ${data.meals[0].strIngredient9},
-                            ${data.meals[0].strIngredient10},
-                            ${data.meals[0].strIngredient11},
-                            ${data.meals[0].strIngredient12},
-                            ${data.meals[0].strIngredient13},
-                            ${data.meals[0].strIngredient14},
-                            ${data.meals[0].strIngredient15},
-                            ${data.meals[0].strIngredient16},
-                            ${data.meals[0].strIngredient17},
-                            ${data.meals[0].strIngredient18},
-                            ${data.meals[0].strIngredient19},
-                            ${data.meals[0].strIngredient20},
-                            </p>
+                            <h2 class="card-title">${data.meals[0].strMeal}</h2>
+                            <h4>Category: ${data.meals[0].strCategory}</h4>
+                            <h5>Ingredients</h5>
+                            <p>${data.meals[0].strIngredient1}</p>
+                            <p>${data.meals[0].strIngredient2}</p>
+                            <p>${data.meals[0].strIngredient3}</p>
+                            <p>${data.meals[0].strIngredient4}</p>
+                            <p>${data.meals[0].strIngredient5}</p>
+                            <p>${data.meals[0].strIngredient6}</p>
+                            <p>${data.meals[0].strIngredient7}</p>
+                            <p>${data.meals[0].strIngredient8}</p>
+                            <p>${data.meals[0].strIngredient9}</p>
+                            <p>${data.meals[0].strIngredient10}</p>
+                            <p>${data.meals[0].strIngredient11}</p>
+                            <p>${data.meals[0].strIngredient12}</p>
+                            <p>${data.meals[0].strIngredient13}</p>
+                            <p>${data.meals[0].strIngredient14}</p>
+                            <p>${data.meals[0].strIngredient15}</p>
+                            <p>${data.meals[0].strIngredient16}</p>
+                            <p>${data.meals[0].strIngredient17}</p>
+                            <p>${data.meals[0].strIngredient18}</p>
+                            <p>${data.meals[0].strIngredient19}</p>
+                            <p>${data.meals[0].strIngredient20}</p>
                         </div>
                     </div>
                 </div>

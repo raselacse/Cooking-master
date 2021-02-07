@@ -9,20 +9,36 @@
     <title>Restorent</title>
 </head>
 <body>
-    <form class="col-md-6 m-auto py-5">
-        <div class="input-group mb-3">
-            <input id="input-box" type="text" class="form-control" placeholder="Search your food ..." required>
-            <div class="input-group-append">
-                <button id="search-button" type="button" class="btn btn-danger">Search</button>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">Cooking master</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" href="#">About</a>
+                    <a class="nav-link active" href="#">Recipes</a>
+                    <a class="nav-link active" href="#">Blog</a>
+                </div>
             </div>
-        </div>
-    </form>
-    <section id="single-food-details" class="text-center">
+        </nav>
+        <form class="col-md-6 m-auto py-5">
+            <div class="input-group mb-3">
+                <input id="input-box" type="text" class="form-control" placeholder="Search for Meal..." required>
+                <div class="input-group-append">
+                    <button id="search-button" type="button" class="btn btn-danger">Search</button>
+                </div>
+            </div>
+        </form>
+        <section id="single-food-details">
 
-    </section>
-    <section id="food-details">
+        </section>
+        <section id="food-details">
 
-    </section>
+        </section>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
