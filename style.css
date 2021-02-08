@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: burlywood;
+    background-color: #EDD165;
 }
 #food-details{
     display: grid;

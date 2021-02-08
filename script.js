@@ -5,11 +5,13 @@ const searchButton = document.getElementById("search-button");
 const inputBox = document.getElementById("input-box");
 
 searchButton.addEventListener("click",function(){
+    document.getElementById("food-details").innerHTML = '';
+    document.getElementById("single-food-details").innerHTML = '';
     if(inputBox.value === ''){
-        const error = `<p class="text-center">Please try again !</P>
+        const blankErrorMessage = `<p class="text-center">Please try again!</P>
         <p class="text-center">You can search by meal first letter or full name</p>`;
 
-        singleFoodDetails.innerHTML += error;
+        singleFoodDetails.innerHTML = blankErrorMessage;
     }
     else{
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputBox.value}`)
@@ -30,12 +32,12 @@ searchButton.addEventListener("click",function(){
                         </div>
                     `;
                     foodDetails.innerHTML += htmlTemplate;
+                    document.getElementById("input-box").value = '';
                 })
             }catch(error){
-                const error2 = `<p class="text-center">${error}</P>
-                <p class="text-center">You can search by meal first letter or full name</p>`;
-
-                singleFoodDetails.innerHTML += error2;
+                const nameErrorMessage = `<p class="text-center">${inputBox.value} Not found!</p>`;
+                singleFoodDetails.innerHTML = nameErrorMessage;
+                document.getElementById("input-box").value = '';
             }
         })
     }
@@ -49,7 +51,7 @@ const displayFoodDetails = name => {
         .then(data => {
             const htmlTemplate = `
                 <div class="col d-flex justify-content-center">
-                    <div class="card h-100 w-50">
+                    <div class="card h-100 w-50 mb-5">
                         <img src="${data.meals[0].strMealThumb}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h2 class="card-title">${data.meals[0].strMeal}</h2>
@@ -79,6 +81,6 @@ const displayFoodDetails = name => {
                     </div>
                 </div>
             `;
-            singleFoodDetails.innerHTML += htmlTemplate;
+            singleFoodDetails.innerHTML = htmlTemplate;
         });
 }
